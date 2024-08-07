@@ -37,7 +37,7 @@ const [slide1, slide2, slide3, slide4] = slides;
 
 // Définition des variables pour gérer mes slides
 
-const pathImage = "../assets/images/slideshow/";
+const pathImage = "./assets/images/slideshow/";
 const bannerImage = document.querySelector("#banner .banner-img");
 const bannerTagLine = document.querySelector("#banner p");
 
