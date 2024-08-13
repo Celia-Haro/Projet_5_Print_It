@@ -48,13 +48,13 @@ function indexControl(direction) {
 
 // Gestion de l'actualisation de la slide (img.src + p innerHTML)
 
-function actualiseSlide() {
+function updateSlide() {
   bannerImage.setAttribute("src", pathImage + slides[currentIndex].image);
   bannerTagLine.innerHTML = slides[currentIndex].tagLine;
 }
 
 // Fonction de l'actualisation des dots en fonction de currentIndex
-function actualiseDot() {
+function updateDot() {
   const currentDotSlide = document.querySelector(
     `.dots .dot:nth-child(${currentIndex + 1})`
   );
@@ -70,14 +70,14 @@ function actualiseDot() {
 // Gestion des évènements
 leftArrow.addEventListener("click", () => {
   currentIndex = indexControl("-");
-  actualiseSlide();
-  actualiseDot();
+  updateSlide();
+  updateDot();
   console.log("J'ai cliqué sur la flèche de gauche");
 });
 
 rightArrow.addEventListener("click", () => {
   currentIndex = indexControl("+");
-  actualiseSlide();
-  actualiseDot();
+  updateSlide();
+  updateDot();
   console.log("J'ai cliqué sur la flèche de droite");
 });
