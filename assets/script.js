@@ -32,15 +32,11 @@ const bannerTagLine = document.querySelector("#banner p");
 let currentIndex = 0;
 
 function indexControl(direction) {
-  if (direction === "+") {
-    currentIndex += 1;
-  } else if (direction === "-") {
-    currentIndex -= 1;
-  }
-
+  currentIndex += direction;
+  const length = slides.length - 1;
   if (currentIndex < 0) {
-    currentIndex = 3;
-  } else if (currentIndex > 3) {
+    currentIndex = length;
+  } else if (currentIndex > length) {
     currentIndex = 0;
   }
   return currentIndex;
@@ -55,28 +51,25 @@ function updateSlide() {
 
 // Fonction de l'actualisation des dots en fonction de currentIndex
 function updateDot() {
-  const currentDotSlide = document.querySelector(
-    `.dots .dot:nth-child(${currentIndex + 1})`
-  );
   const allDots = document.querySelectorAll(".dots .dot");
 
   allDots.forEach((dot) => {
     dot.classList.remove("dot_selected");
   });
 
-  currentDotSlide.classList.add("dot_selected");
+  allDots[currentIndex].classList.add("dot_selected");
 }
 
 // Gestion des évènements
 leftArrow.addEventListener("click", () => {
-  currentIndex = indexControl("-");
+  currentIndex = indexControl(-1);
   updateSlide();
   updateDot();
   console.log("J'ai cliqué sur la flèche de gauche");
 });
 
 rightArrow.addEventListener("click", () => {
-  currentIndex = indexControl("+");
+  currentIndex = indexControl(1);
   updateSlide();
   updateDot();
   console.log("J'ai cliqué sur la flèche de droite");
